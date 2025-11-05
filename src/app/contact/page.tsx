@@ -50,24 +50,24 @@ export default function ContactPage() {
             </p>
             
             <p className={styles.contactInfo}>
-              Email: <a href="mailto:Hello@entertainmentsportz.com" className={styles.link}>
-                Hello@entertainmentsportz.com
+              Email: <a href="mailto:hello@escelebrations.com" className={styles.link}>
+                hello@escelebrations.com
               </a>
             </p>
-            
+
             <div className={styles.socialLinks}>
-              {/* <a 
-                href="https://www.linkedin.com/company/entertainmentsportz" 
-                target="_blank" 
+              <a
+                href="https://www.linkedin.com/company/es-celebrations/"
+                target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialIcon}
                 aria-label="LinkedIn"
               >
                 <Linkedin size={32} />
-              </a> */}
-              <a 
-                href="https://www.instagram.com/entertainmentsportz" 
-                target="_blank" 
+              </a>
+              <a
+                href="https://www.instagram.com/entertainmentsportz"
+                target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialIcon}
                 aria-label="Instagram"

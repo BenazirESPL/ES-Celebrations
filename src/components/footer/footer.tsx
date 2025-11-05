@@ -46,9 +46,9 @@ export default function Footer() {
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                 </svg>
               </a>
-              
-              {/* <a
-                href="https://linkedin.com"
+
+              <a
+                href="https://www.linkedin.com/company/es-celebrations/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialIcon}
@@ -59,7 +59,7 @@ export default function Footer() {
                   <rect x="2" y="9" width="4" height="12"></rect>
                   <circle cx="4" cy="4" r="2"></circle>
                 </svg>
-              </a> */}
+              </a>
             </div>
           </div>
         </div>
