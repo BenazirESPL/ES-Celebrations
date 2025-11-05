@@ -5,7 +5,20 @@
   left: 0;
   right: 0;
   z-index: 50;
-  background-color: transparent;
+  border: 0px;
+  /* Beautiful gradient fade from dark to transparent */
+  background: linear-gradient(
+    180deg,
+    rgba(8, 38, 43, 0.95) 0%,
+    rgba(8, 38, 43, 0.85) 40%,
+    rgba(8, 38, 43, 0.6) 70%,
+    rgba(8, 38, 43, 0.02) 85%,
+    transparent 100%
+  );
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  /* Remove border since we're fading to transparent */
+  padding-bottom: 1rem;
 }
 .headerColor {
   position: fixed;
@@ -135,8 +148,21 @@
   align-items: center;
 }
 .logoImage{
-  /* filter: brightness(0) invert(1); */
+  /* Keep gold logo with strong shadows for depth and visibility */
+  filter:
+    drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8))
+    drop-shadow(0 4px 16px rgba(0, 0, 0, 0.6))
+    drop-shadow(0 0 16px rgba(201, 169, 97, 0.3))
+    brightness(1.1);
+  transition: filter 0.3s ease;
+}
 
+.logoImage:hover {
+  filter:
+    drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8))
+    drop-shadow(0 4px 16px rgba(0, 0, 0, 0.6))
+    drop-shadow(0 0 20px rgba(201, 169, 97, 0.5))
+    brightness(1.15);
 }
 .menuLogoImage {
   object-fit: contain;
