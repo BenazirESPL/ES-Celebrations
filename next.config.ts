@@ -18,13 +18,12 @@ const nextConfig: NextConfig = {
   },
 
   // Performance optimizations
-  swcMinify: true,
   reactStrictMode: true,
   poweredByHeader: false,
 
   // Experimental features for better performance
   experimental: {
-    optimizePackageImports: ['swiper', 'next/image'],
+    optimizePackageImports: ['swiper', 'next/image', 'lucide-react', 'framer-motion'],
   },
 
   // Compression
@@ -32,6 +31,30 @@ const nextConfig: NextConfig = {
 
   // Production source maps (disable for faster builds)
   productionBrowserSourceMaps: false,
+
+  // Headers for better caching and security
+  async headers() {
+    return [
+      {
+        source: '/:all*(svg|jpg|jpeg|png|webp|avif|gif|ico)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

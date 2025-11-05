@@ -4,6 +4,7 @@ import Image from "next/image"
 import Navigation from "@/components/navigation/navigation"
 import Footer from "@/components/footer/footer"
 import { Linkedin, Instagram } from "lucide-react"
+import { blurDataURLs } from "@/lib/image-utils"
 import styles from "./contact.module.css"
 
 export default function ContactPage() {
@@ -14,13 +15,15 @@ export default function ContactPage() {
       <div className={styles.heroSection}>
         {/* Optimized background image using Next.js Image */}
         <Image
-          src="/gallery/hero/NIA07960.webp"
+          src="/gallery/contact/contact-min.png"
           alt="Contact background"
           fill
           priority
           quality={90}
           className={styles.heroImage}
           sizes="100vw"
+          placeholder="blur"
+          blurDataURL={blurDataURLs.landscape}
           style={{
             objectFit: 'cover',
             objectPosition: 'center',
@@ -53,7 +56,7 @@ export default function ContactPage() {
             </p>
             
             <div className={styles.socialLinks}>
-              <a 
+              {/* <a 
                 href="https://www.linkedin.com/company/entertainmentsportz" 
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -61,7 +64,7 @@ export default function ContactPage() {
                 aria-label="LinkedIn"
               >
                 <Linkedin size={32} />
-              </a>
+              </a> */}
               <a 
                 href="https://www.instagram.com/entertainmentsportz" 
                 target="_blank" 

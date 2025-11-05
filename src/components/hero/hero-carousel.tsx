@@ -2,6 +2,8 @@
 
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay, EffectFade } from "swiper/modules"
+import Image from "next/image"
+import { blurDataURLs } from "@/lib/image-utils"
 import "swiper/css"
 import "swiper/css/effect-fade"
 import styles from "./hero-carousel.module.css"
@@ -56,6 +58,16 @@ const heroImages = [
 export default function HeroCarousel() {
   return (
     <div className={styles.carouselContainer}>
+      {/* Preload first 3 hero images for instant display */}
+      {heroImages.slice(0, 3).map((image, index) => (
+        <link
+          key={`preload-${index}`}
+          rel="preload"
+          as="image"
+          href={image.url}
+        />
+      ))}
+
       <Swiper
         modules={[Autoplay, EffectFade]}
         effect="fade"
@@ -73,12 +85,21 @@ export default function HeroCarousel() {
       >
         {heroImages.map((image, index) => (
           <SwiperSlide key={index} className={styles.slide}>
-            <div
-              className={styles.slideBackground}
-              style={{
-                backgroundImage: `url(${image.url})`
-              }}
-            >
+            <div className={styles.slideBackground}>
+              <Image
+                src={image.url}
+                alt={image.alt}
+                fill
+                priority={index === 0}
+                quality={90}
+                sizes="100vw"
+                placeholder="blur"
+                blurDataURL={blurDataURLs.landscape}
+                style={{
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                }}
+              />
               <div className={styles.overlay} />
             </div>
           </SwiperSlide>

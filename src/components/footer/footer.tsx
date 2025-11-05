@@ -47,7 +47,7 @@ export default function Footer() {
                 </svg>
               </a>
               
-              <a
+              {/* <a
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -59,7 +59,7 @@ export default function Footer() {
                   <rect x="2" y="9" width="4" height="12"></rect>
                   <circle cx="4" cy="4" r="2"></circle>
                 </svg>
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

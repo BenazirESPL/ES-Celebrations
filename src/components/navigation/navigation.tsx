@@ -1,13 +1,13 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, memo, useCallback } from "react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import styles from "./navigation.module.css"
 
-const AnimatedMenuIcon = ({ isOpen }: { isOpen: boolean }) => (
+const AnimatedMenuIcon = memo(({ isOpen }: { isOpen: boolean }) => (
   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <motion.line
       x1="5"
@@ -34,9 +34,10 @@ const AnimatedMenuIcon = ({ isOpen }: { isOpen: boolean }) => (
       transition={{ duration: 0.3, ease: "easeInOut" }}
     />
   </svg>
-)
+))
+AnimatedMenuIcon.displayName = "AnimatedMenuIcon"
 
-export default function Navigation() {
+function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const pathname = usePathname()
   const isHomePage = pathname === "/"
@@ -53,6 +54,11 @@ export default function Navigation() {
     setIsMenuOpen(false)
   }, [pathname])
 
+  // Memoized toggle handler to prevent unnecessary re-renders
+  const handleMenuToggle = useCallback(() => {
+    setIsMenuOpen(prev => !prev)
+  }, [])
+
   // Get current page name
   let currentPage = menuItems.find(item => item.href === pathname)?.label || ""
 
@@ -63,7 +69,7 @@ export default function Navigation() {
       <div className={styles.headerContent}>
         {/* Left Side - Menu Button and Page Name */}
         <div className={styles.leftSection}>
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={styles.menuButton} aria-label="Toggle menu">
+          <button onClick={handleMenuToggle} className={styles.menuButton} aria-label="Toggle menu">
             <AnimatedMenuIcon isOpen={isMenuOpen} />
           </button>
           {!isHomePage && currentPage && (
@@ -139,3 +145,6 @@ export default function Navigation() {
     </header>
   )
 }
+
+export default memo(Navigation)
+Navigation.displayName = "Navigation"

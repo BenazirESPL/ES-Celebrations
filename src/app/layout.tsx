@@ -1,12 +1,15 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Montserrat, Charm, Playfair_Display } from "next/font/google"
+import ErrorBoundary from "@/components/error-boundary/error-boundary"
 import "./globals.css"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-montserrat"
+  variable: "--font-montserrat",
+  display: "swap",
+  preload: true,
 })
 
 const charm = Charm({
@@ -14,6 +17,7 @@ const charm = Charm({
   weight: ["400", "700"],
   variable: "--font-charm",
   display: "swap",
+  preload: true,
 })
 
 const playfair = Playfair_Display({
@@ -21,6 +25,7 @@ const playfair = Playfair_Display({
   weight: ["400", "500", "600", "700"],
   variable: "--font-playfair",
   display: "swap",
+  preload: true,
 })
 
 export const metadata: Metadata = {
@@ -89,8 +94,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Preconnect to Google Fonts for faster loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* DNS prefetch for performance */}
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+      </head>
       <body className={`${montserrat.variable} ${charm.variable} ${playfair.variable}`}>
-        {children}
+        <ErrorBoundary>
+          {children}
+        </ErrorBoundary>
       </body>
     </html>
   )

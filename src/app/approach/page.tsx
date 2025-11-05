@@ -3,6 +3,7 @@
 import Image from "next/image"
 import Navigation from "@/components/navigation/navigation"
 import Footer from "@/components/footer/footer"
+import { blurDataURLs } from "@/lib/image-utils"
 import styles from "./approach.module.css"
 
 // Note: Metadata should be added in a layout.tsx or moved to server component
@@ -17,13 +18,15 @@ export default function ApproachPage() {
       <section className={styles.hero}>
         <div className={styles.heroOverlay} />
         <Image
-          src="/gallery/hero/NIA07960.webp"
+          src="/gallery/weddings/_DSC9286.webp"
           alt="ES Celebrations Approach"
           fill
           className={styles.heroImage}
           priority
           quality={90}
           sizes="100vw"
+          placeholder="blur"
+          blurDataURL={blurDataURLs.landscape}
         />
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>OUR APPROACH</h1>
@@ -172,6 +175,8 @@ export default function ApproachPage() {
                   quality={85}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   loading="lazy"
+                  placeholder="blur"
+                  blurDataURL={blurDataURLs.photo}
                 />
               </div>
               <div className={styles.themeContent}>
@@ -193,6 +198,8 @@ export default function ApproachPage() {
                   quality={85}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   loading="lazy"
+                  placeholder="blur"
+                  blurDataURL={blurDataURLs.photo}
                 />
               </div>
               <div className={styles.themeContent}>
@@ -214,6 +221,8 @@ export default function ApproachPage() {
                   quality={85}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   loading="lazy"
+                  placeholder="blur"
+                  blurDataURL={blurDataURLs.photo}
                 />
               </div>
               <div className={styles.themeContent}>
@@ -235,6 +244,8 @@ export default function ApproachPage() {
                   quality={85}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   loading="lazy"
+                  placeholder="blur"
+                  blurDataURL={blurDataURLs.photo}
                 />
               </div>
               <div className={styles.themeContent}>

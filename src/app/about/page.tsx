@@ -3,6 +3,7 @@
 import Image from "next/image"
 import Navigation from "@/components/navigation/navigation"
 import Footer from "@/components/footer/footer"
+import { blurDataURLs } from "@/lib/image-utils"
 import styles from "./about.module.css"
 
 // Note: Metadata export doesn't work in client components
@@ -163,6 +164,9 @@ export default function AboutPage() {
             width={600}
             height={900}
             priority
+            placeholder="blur"
+            blurDataURL={blurDataURLs.portrait}
+            quality={85}
           />
         </div>
       </div>

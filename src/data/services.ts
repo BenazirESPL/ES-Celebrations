@@ -14,7 +14,7 @@ export const services: Service[] = [
     title: 'Wedding Events',
     slug: 'weddings',
     description: 'From pre-wedding functions, ceremony, receptions, destination weddings to design and décor, we manage every detail so you can live your dream day.',
-    featuredImage: '/gallery/hero/PJP_5501.webp',
+    featuredImage: '/gallery/weddings/016A3468.webp',
     images: [
       '/gallery/weddings/_DSC9286.webp',
       '/gallery/weddings/016A3468.webp',

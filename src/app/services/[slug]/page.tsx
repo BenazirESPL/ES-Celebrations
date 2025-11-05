@@ -1,13 +1,14 @@
 "use client";
 
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback } from 'react';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Masonry from 'react-masonry-css';
 import Navigation from '@/components/navigation/navigation';
 import Footer from '@/components/footer/footer';
-import { getServiceBySlug, services } from '@/data/services';
+import { getServiceBySlug } from '@/data/services';
+import { blurDataURLs } from '@/lib/image-utils';
 import styles from './service-gallery.module.css';
 
 interface ServicePageProps {
@@ -24,26 +25,6 @@ const breakpointCols = {
   900: 2,
   600: 1,
 };
-
-// Shimmer effect for loading placeholder
-const shimmer = (w: number, h: number) => `
-<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs>
-    <linearGradient id="g">
-      <stop stop-color="#e8e4df" offset="20%" />
-      <stop stop-color="#f5f1ed" offset="50%" />
-      <stop stop-color="#e8e4df" offset="70%" />
-    </linearGradient>
-  </defs>
-  <rect width="${w}" height="${h}" fill="#e8e4df" />
-  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
-  <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
-</svg>`;
-
-const toBase64 = (str: string) =>
-  typeof window === 'undefined'
-    ? Buffer.from(str).toString('base64')
-    : window.btoa(str);
 
 export default function ServiceGalleryPage({ params }: ServicePageProps) {
   const service = getServiceBySlug(params.slug);
@@ -76,11 +57,6 @@ export default function ServiceGalleryPage({ params }: ServicePageProps) {
     }, 300);
   }, [displayedImages.length, service.images]);
 
-  const blurDataURL = useMemo(
-    () => `data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`,
-    []
-  );
-
   return (
     <div className={styles.container}>
       <Navigation />
@@ -106,7 +82,7 @@ export default function ServiceGalleryPage({ params }: ServicePageProps) {
           className={styles.heroImage}
           sizes="100vw"
           placeholder="blur"
-          blurDataURL={blurDataURL}
+          blurDataURL={blurDataURLs.landscape}
         />
       </div>
 
@@ -151,7 +127,7 @@ export default function ServiceGalleryPage({ params }: ServicePageProps) {
                   sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
                   className={styles.masonryImage}
                   placeholder="blur"
-                  blurDataURL={blurDataURL}
+                  blurDataURL={blurDataURLs.photo}
                   priority={index < 6}
                   loading={index < 6 ? 'eager' : 'lazy'}
                 />
