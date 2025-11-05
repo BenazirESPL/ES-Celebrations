@@ -10,7 +10,7 @@ import styles from "./hero-carousel.module.css"
 
 const heroImages = [
   {
-    url: "/gallery/hero/NIA07960.webp",
+    url: "/gallery/hero/main-hero.webp",
     alt: "Luxury event celebration"
   },
   {
