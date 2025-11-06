@@ -1,5 +1,6 @@
 "use client"
 
+import { memo, useMemo } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay, EffectFade } from "swiper/modules"
 import Image from "next/image"
@@ -55,7 +56,22 @@ const heroImages = [
   }
 ]
 
-export default function HeroCarousel() {
+function HeroCarousel() {
+  // Memoize swiper modules to prevent recreation
+  const swiperModules = useMemo(() => [Autoplay, EffectFade], []);
+
+  // Memoize autoplay config
+  const autoplayConfig = useMemo(() => ({
+    delay: 5000,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: false,
+  }), []);
+
+  // Memoize fade effect config
+  const fadeConfig = useMemo(() => ({
+    crossFade: true,
+  }), []);
+
   return (
     <div className={styles.carouselContainer}>
       {/* Preload first 3 hero images for instant display */}
@@ -69,18 +85,15 @@ export default function HeroCarousel() {
       ))}
 
       <Swiper
-        modules={[Autoplay, EffectFade]}
+        modules={swiperModules}
         effect="fade"
-        fadeEffect={{
-          crossFade: true
-        }}
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: false
-        }}
+        fadeEffect={fadeConfig}
+        autoplay={autoplayConfig}
         loop={true}
-        speed={1500}
+        speed={1200}
+        touchStartPreventDefault={false}
+        resistance={false}
+        watchSlidesProgress={false}
         className={styles.swiper}
       >
         {heroImages.map((image, index) => (
@@ -91,10 +104,11 @@ export default function HeroCarousel() {
                 alt={image.alt}
                 fill
                 priority={index === 0}
-                quality={90}
+                quality={index === 0 ? 95 : 85}
                 sizes="100vw"
                 placeholder="blur"
                 blurDataURL={blurDataURLs.landscape}
+                loading={index === 0 ? "eager" : "lazy"}
                 style={{
                   objectFit: 'cover',
                   objectPosition: 'center',
@@ -108,3 +122,6 @@ export default function HeroCarousel() {
     </div>
   )
 }
+
+// Memoize the entire component to prevent unnecessary re-renders
+export default memo(HeroCarousel);

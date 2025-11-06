@@ -1,29 +1,34 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Image optimization
+  // Image optimization - aggressive settings
   images: {
     formats: ['image/avif', 'image/webp'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 60,
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    minimumCacheTTL: 3600, // 1 hour cache
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    // Loader optimization
+    loader: 'default',
+    unoptimized: false,
   },
 
   // Compiler optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
+    // React compiler optimizations
+    reactRemoveProperties: process.env.NODE_ENV === 'production',
   },
 
   // Performance optimizations
   reactStrictMode: true,
   poweredByHeader: false,
 
-  // Experimental features for better performance
+  // Experimental features for maximum performance
   experimental: {
-    optimizePackageImports: ['swiper', 'next/image', 'lucide-react', 'framer-motion'],
+    optimizePackageImports: ['swiper', 'next/image', 'lucide-react', 'framer-motion', 'react-infinite-scroll-component', 'react-masonry-css'],
   },
 
   // Compression

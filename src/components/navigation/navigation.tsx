@@ -7,34 +7,40 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import styles from "./navigation.module.css"
 
-const AnimatedMenuIcon = memo(({ isOpen }: { isOpen: boolean }) => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <motion.line
-      x1="5"
-      y1="6"
-      x2="19"
-      y2="6"
-      animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
-    />
-    <motion.line
-      x1="2"
-      y1="12"
-      x2="22"
-      y2="12"
-      animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-      transition={{ duration: 0.2 }}
-    />
-    <motion.line
-      x1="5"
-      y1="18"
-      x2="19"
-      y2="18"
-      animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
-    />
-  </svg>
-))
+const AnimatedMenuIcon = memo(({ isOpen }: { isOpen: boolean }) => {
+  // Optimized transition configs
+  const lineTransition = { duration: 0.25, ease: "easeInOut" } as const;
+  const opacityTransition = { duration: 0.15 } as const;
+
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <motion.line
+        x1="5"
+        y1="6"
+        x2="19"
+        y2="6"
+        animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+        transition={lineTransition}
+      />
+      <motion.line
+        x1="2"
+        y1="12"
+        x2="22"
+        y2="12"
+        animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+        transition={opacityTransition}
+      />
+      <motion.line
+        x1="5"
+        y1="18"
+        x2="19"
+        y2="18"
+        animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+        transition={lineTransition}
+      />
+    </svg>
+  );
+});
 AnimatedMenuIcon.displayName = "AnimatedMenuIcon"
 
 function Navigation() {

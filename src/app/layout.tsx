@@ -4,12 +4,15 @@ import { Montserrat, Charm, Playfair_Display } from "next/font/google"
 import ErrorBoundary from "@/components/error-boundary/error-boundary"
 import "./globals.css"
 
+// Optimized font loading with adjustFontFallback for better CLS
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-montserrat",
   display: "swap",
   preload: true,
+  adjustFontFallback: true,
+  fallback: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
 })
 
 const charm = Charm({
@@ -18,6 +21,8 @@ const charm = Charm({
   variable: "--font-charm",
   display: "swap",
   preload: true,
+  adjustFontFallback: true,
+  fallback: ["Georgia", "serif"],
 })
 
 const playfair = Playfair_Display({
@@ -26,6 +31,8 @@ const playfair = Playfair_Display({
   variable: "--font-playfair",
   display: "swap",
   preload: true,
+  adjustFontFallback: true,
+  fallback: ["Georgia", "Times New Roman", "serif"],
 })
 
 export const metadata: Metadata = {
