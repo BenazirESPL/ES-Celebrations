@@ -7,6 +7,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import Masonry from 'react-masonry-css';
 import Navigation from '@/components/navigation/navigation';
 import Footer from '@/components/footer/footer';
+import PageTransition from '@/components/page-transition/page-transition';
 import { getServiceBySlug } from '@/data/services';
 import { blurDataURLs } from '@/lib/image-utils';
 import styles from './service-gallery.module.css';
@@ -60,7 +61,7 @@ export default function ServiceGalleryPage({ params }: ServicePageProps) {
   return (
     <div className={styles.container}>
       <Navigation />
-      
+
       {/* Preload first batch of images */}
       {service.images.slice(0, IMAGES_PER_PAGE).map((image, index) => (
         <link
@@ -70,72 +71,74 @@ export default function ServiceGalleryPage({ params }: ServicePageProps) {
           href={image}
         />
       ))}
-      
-      {/* Hero Section */}
-      <div className={styles.hero}>
-        <Image
-          src={service.featuredImage}
-          alt={service.title}
-          fill
-          priority
-          quality={90}
-          className={styles.heroImage}
-          sizes="100vw"
-          placeholder="blur"
-          blurDataURL={blurDataURLs.landscape}
-        />
-      </div>
 
-      {/* Title Overlay */}
-      <div className={styles.heroOverlay}>
-        <div className={styles.heroInnerOverlay}>
-          <h1 className={styles.heroTitle}>{service.title}</h1>
+      <PageTransition variant="fade" duration={600}>
+        {/* Hero Section */}
+        <div className={styles.hero}>
+          <Image
+            src={service.featuredImage}
+            alt={service.title}
+            fill
+            priority
+            quality={90}
+            className={styles.heroImage}
+            sizes="100vw"
+            placeholder="blur"
+            blurDataURL={blurDataURLs.landscape}
+          />
         </div>
-      </div>
 
-      {/* Masonry Gallery with Infinite Scroll */}
-      <main className={styles.main}>
-        <InfiniteScroll
-          dataLength={displayedImages.length}
-          next={fetchMoreData}
-          hasMore={hasMore}
-          loader={
-            <div className={styles.loader}>
-              <div className={styles.loaderSpinner}></div>
-              <p>Loading more beautiful moments...</p>
-            </div>
-          }
-          endMessage={
-            <div className={styles.endMessage}>
-              You&apos;ve reached the end of our {service.title.toLowerCase()} gallery
-            </div>
-          }
-        >
-          <Masonry
-            breakpointCols={breakpointCols}
-            className={styles.masonryGrid}
-            columnClassName={styles.masonryColumn}
-          >
-            {displayedImages.map((image, index) => (
-              <div key={`${image}-${index}`} className={styles.masonryCard}>
-                <Image
-                  src={image}
-                  alt={`${service.title} - Image ${index + 1}`}
-                  width={800}
-                  height={600}
-                  quality={85}
-                  sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
-                  className={styles.masonryImage}
-                  placeholder="blur"
-                  blurDataURL={blurDataURLs.photo}
-                  priority={index < 6}
-                  loading={index < 6 ? 'eager' : 'lazy'}
-                />
+        {/* Title Overlay */}
+        <div className={styles.heroOverlay}>
+          <div className={styles.heroInnerOverlay}>
+            <h1 className={styles.heroTitle}>{service.title}</h1>
+          </div>
+        </div>
+
+        {/* Masonry Gallery with Infinite Scroll */}
+        <main className={styles.main}>
+          <InfiniteScroll
+            dataLength={displayedImages.length}
+            next={fetchMoreData}
+            hasMore={hasMore}
+            loader={
+              <div className={styles.loader}>
+                <div className={styles.loaderSpinner}></div>
+                <p>Loading more beautiful moments...</p>
               </div>
-            ))}
-          </Masonry>
-        </InfiniteScroll>
-      </main>
+            }
+            endMessage={
+              <div className={styles.endMessage}>
+                You&apos;ve reached the end of our {service.title.toLowerCase()} gallery
+              </div>
+            }
+          >
+            <Masonry
+              breakpointCols={breakpointCols}
+              className={styles.masonryGrid}
+              columnClassName={styles.masonryColumn}
+            >
+              {displayedImages.map((image, index) => (
+                <div key={`${image}-${index}`} className={styles.masonryCard}>
+                  <Image
+                    src={image}
+                    alt={`${service.title} - Image ${index + 1}`}
+                    width={800}
+                    height={600}
+                    quality={85}
+                    sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
+                    className={styles.masonryImage}
+                    placeholder="blur"
+                    blurDataURL={blurDataURLs.photo}
+                    priority={index < 6}
+                    loading={index < 6 ? 'eager' : 'lazy'}
+                  />
+                </div>
+              ))}
+            </Masonry>
+          </InfiniteScroll>
+        </main>
+      </PageTransition>
 
       <Footer />
     </div>

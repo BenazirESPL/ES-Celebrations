@@ -1,0 +1,73 @@
+.pageTransition {
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+/* Fade variant */
+.fade {
+  opacity: 0;
+}
+
+.fade.visible {
+  opacity: 1;
+}
+
+/* Slide up variant */
+.slideUp {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.slideUp.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide down variant */
+.slideDown {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.slideDown.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Zoom variant */
+.zoom {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.zoom.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger variant (for use with child elements) */
+.stagger {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.stagger.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .pageTransition {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+
+  .slideUp,
+  .slideDown,
+  .zoom,
+  .stagger {
+    transform: none !important;
+  }
+}
