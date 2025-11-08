@@ -1,6 +1,6 @@
 .container {
   min-height: 100vh;
-  background-color: #f5f1ed;
+  background: linear-gradient(180deg, #f5f1ed 0%, #e8e0d5 50%, #f5f1ed 100%);
 }
 
 /* Hero Section */
@@ -9,6 +9,70 @@
   height: 100vh;
   width: 100%;
   overflow: hidden;
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInUpHero {
+  from {
+    opacity: 0;
+    transform: translateY(30px) translateX(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(-50%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .heroImage {
@@ -39,6 +103,7 @@
   transform: translateX(-50%);
   z-index: 2;
   text-align: center;
+  animation: fadeInUpHero 1s ease-out 0.3s both;
 }
 
 .heroTitle {
@@ -49,12 +114,40 @@
   color: #ffffff;
   text-transform: uppercase;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: letter-spacing 0.3s ease;
+}
+
+.heroTitle:hover {
+  letter-spacing: 0.2em;
 }
 
 /* Philosophy Section */
 .philosophySection {
-  background-color: #f5f1ed;
+  background: linear-gradient(135deg, #f5f1ed 0%, #faf7f2 50%, #f5f1ed 100%);
   padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.philosophySection::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+  animation: rotate 30s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .philosophyContainer {
@@ -70,6 +163,7 @@
   line-height: 1.4;
   color: #2c3e50;
   margin-bottom: 3rem;
+  animation: fadeInUp 0.8s ease-out both;
 }
 
 .philosophyContent {
@@ -85,6 +179,19 @@
   color: #4a5568;
   margin-bottom: 1.75rem;
   text-align: left;
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+.philosophyText:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.philosophyText:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.philosophyText:nth-child(3) {
+  animation-delay: 0.4s;
 }
 
 .philosophyText:last-child {
@@ -93,8 +200,23 @@
 
 /* Process Section */
 .processSection {
-  background-color: #08262b;
+  background: linear-gradient(135deg, #08262b 0%, #0a2f35 50%, #08262b 100%);
   padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.processSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .processContainer {
@@ -110,6 +232,7 @@
   color: #ffffff;
   text-align: center;
   margin-bottom: 4rem;
+  animation: fadeIn 0.8s ease-out both;
 }
 
 .processList {
@@ -123,6 +246,18 @@
   grid-template-columns: 80px 1fr;
   gap: 2rem;
   align-items: start;
+  animation: slideInLeft 0.8s ease-out both;
+  transition: transform 0.3s ease;
+}
+
+.processStep:nth-child(1) { animation-delay: 0.1s; }
+.processStep:nth-child(2) { animation-delay: 0.2s; }
+.processStep:nth-child(3) { animation-delay: 0.3s; }
+.processStep:nth-child(4) { animation-delay: 0.4s; }
+.processStep:nth-child(5) { animation-delay: 0.5s; }
+
+.processStep:hover {
+  transform: translateX(10px);
 }
 
 .stepNumber {
@@ -131,6 +266,12 @@
   font-weight: 300;
   color: #d4af37;
   line-height: 1;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.processStep:hover .stepNumber {
+  color: #f0d98d;
+  transform: scale(1.1);
 }
 
 .stepContent {
@@ -144,6 +285,11 @@
   color: #ffffff;
   margin-bottom: 1rem;
   letter-spacing: 0.02em;
+  transition: color 0.3s ease;
+}
+
+.processStep:hover .stepTitle {
+  color: #d4af37;
 }
 
 .stepDescription {
@@ -152,6 +298,11 @@
   font-weight: 400;
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.9);
+  transition: color 0.3s ease;
+}
+
+.processStep:hover .stepDescription {
+  color: rgba(255, 255, 255, 1);
 }
 
 /* Why Section */
@@ -177,16 +328,45 @@
 }
 
 .whyCard {
-  background-color: #ffffff;
+  background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
   padding: 2.5rem;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.3s ease,
+              border-color 0.3s ease;
+  animation: scaleIn 0.6s ease-out both;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
 }
 
+.whyCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.whyCard:hover::before {
+  left: 100%;
+}
+
+.whyCard:nth-child(1) { animation-delay: 0.1s; }
+.whyCard:nth-child(2) { animation-delay: 0.2s; }
+.whyCard:nth-child(3) { animation-delay: 0.3s; }
+.whyCard:nth-child(4) { animation-delay: 0.4s; }
+
 .whyCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  background-color: #fafafa;
 }
 
 .whyTitle {
@@ -196,6 +376,11 @@
   color: #2c3e50;
   margin-bottom: 1rem;
   letter-spacing: 0.02em;
+  transition: color 0.3s ease;
+}
+
+.whyCard:hover .whyTitle {
+  color: #d4af37;
 }
 
 .whyText {
@@ -204,6 +389,11 @@
   font-weight: 400;
   line-height: 1.7;
   color: #4a5568;
+  transition: color 0.3s ease;
+}
+
+.whyCard:hover .whyText {
+  color: #2c3e50;
 }
 
 /* Gallery Section */
@@ -225,6 +415,7 @@
   text-align: center;
   margin-top: -2rem;
   margin-bottom: 4rem;
+  animation: fadeIn 0.8s ease-out 0.2s both;
 }
 
 .themesList {
@@ -234,16 +425,25 @@
 }
 
 .themeCard {
-  background-color: #ffffff;
-  border-radius: 4px;
+  background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+  border-radius: 12px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.3s ease;
   will-change: transform;
+  animation: scaleIn 0.7s ease-out both;
 }
 
+.themeCard:nth-child(1) { animation-delay: 0.1s; }
+.themeCard:nth-child(2) { animation-delay: 0.2s; }
+.themeCard:nth-child(3) { animation-delay: 0.3s; }
+.themeCard:nth-child(4) { animation-delay: 0.4s; }
+
 .themeCard:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
 }
 
 .themeImageWrapper {
@@ -256,16 +456,21 @@
 .themeImage {
   object-fit: cover;
   object-position: center;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
 
 .themeCard:hover .themeImage {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 .themeContent {
   padding: 2rem;
+  transition: background-color 0.3s ease;
+}
+
+.themeCard:hover .themeContent {
+  background-color: #fafafa;
 }
 
 .themeTitle {
@@ -275,6 +480,11 @@
   color: #2c3e50;
   margin-bottom: 1rem;
   letter-spacing: 0.02em;
+  transition: color 0.3s ease;
+}
+
+.themeCard:hover .themeTitle {
+  color: #d4af37;
 }
 
 .themeDescription {
@@ -283,6 +493,11 @@
   font-weight: 400;
   line-height: 1.7;
   color: #4a5568;
+  transition: color 0.3s ease;
+}
+
+.themeCard:hover .themeDescription {
+  color: #2c3e50;
 }
 
 /* Responsive Design */
