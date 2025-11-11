@@ -1,0 +1,727 @@
+
+/* ============================================
+   EXTRAORDINARY CREATIVE ENHANCEMENTS
+   Elegant, Beautiful, Out of the Ordinary
+   ============================================ */
+
+/* PASTEL THEME - Ethereal Garden Romance */
+.pastelTheme .heroContent {
+  position: relative;
+}
+
+.pastelTheme .heroContent::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 182, 193, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: breathe 6s ease-in-out infinite;
+}
+
+.pastelTheme .heroTitle {
+  position: relative;
+  display: inline-block;
+  padding: 0 4rem;
+}
+
+.pastelTheme .heroTitle::before,
+.pastelTheme .heroTitle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 60px;
+  height: 60px;
+  border: 1px solid rgba(255, 182, 193, 0.2);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.pastelTheme .heroTitle::before {
+  left: -20px;
+  animation: orbit 8s linear infinite;
+}
+
+.pastelTheme .heroTitle::after {
+  right: -20px;
+  animation: orbit 8s linear infinite reverse;
+}
+
+.pastelTheme .heroAccent {
+  position: relative;
+  height: 40px;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 182, 193, 0.3), transparent);
+  margin: 2rem auto;
+}
+
+.pastelTheme .heroAccent::before {
+  content: '◇';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.75rem;
+  color: rgba(255, 182, 193, 0.5);
+  animation: rotate360 12s linear infinite;
+}
+
+.pastelTheme .galleryTitle {
+  position: relative;
+  padding: 0 2rem;
+}
+
+.pastelTheme .galleryTitle::before,
+.pastelTheme .galleryTitle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 30px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255, 182, 193, 0.4));
+  transform: translateY(-50%);
+}
+
+.pastelTheme .galleryTitle::before {
+  left: -40px;
+}
+
+.pastelTheme .galleryTitle::after {
+  right: -40px;
+  background: linear-gradient(to left, transparent, rgba(255, 182, 193, 0.4));
+}
+
+.pastelTheme .masonryCard {
+  position: relative;
+  overflow: visible;
+}
+
+.pastelTheme .masonryCard::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border: 1px solid rgba(255, 182, 193, 0);
+  border-radius: 50%;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.pastelTheme .masonryCard:hover::before {
+  border-color: rgba(255, 182, 193, 0.2);
+  border-radius: 2px;
+}
+
+.pastelTheme .masonryCard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 182, 193, 0.05) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.pastelTheme .masonryCard:hover::after {
+  opacity: 1;
+}
+
+/* BLUE HALDI THEME - Architectural Minimalism */
+.blueHaldiTheme .heroContent::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 200px;
+  border: 1px solid rgba(14, 165, 233, 0.15);
+  transform-origin: center;
+  animation: rotateSquare 20s linear infinite;
+}
+
+.blueHaldiTheme .heroTitle {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.blueHaldiTheme .heroTitle::before,
+.blueHaldiTheme .heroTitle::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 1px;
+  background: rgba(14, 165, 233, 0.3);
+  top: 0;
+}
+
+.blueHaldiTheme .heroTitle::before {
+  left: 50%;
+  transform: translateX(-100%) translateX(-40px);
+}
+
+.blueHaldiTheme .heroTitle::after {
+  right: 50%;
+  transform: translateX(100%) translateX(40px);
+}
+
+.blueHaldiTheme .heroAccent {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 2rem auto;
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  transform: rotate(45deg);
+}
+
+.blueHaldiTheme .heroAccent::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  border: 1px solid rgba(14, 165, 233, 0.3);
+}
+
+.blueHaldiTheme .heroAccent::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background: rgba(14, 165, 233, 0.1);
+}
+
+.blueHaldiTheme .galleryTitle {
+  position: relative;
+  display: inline-block;
+}
+
+.blueHaldiTheme .galleryTitle::before {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #0ea5e9, transparent);
+}
+
+.blueHaldiTheme .masonryCard {
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: clip-path 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.blueHaldiTheme .masonryCard:hover {
+  clip-path: polygon(2% 0, 100% 0, 98% 100%, 0 100%);
+}
+
+.blueHaldiTheme .masonryCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  background: linear-gradient(to bottom, #0ea5e9, #3b82f6);
+  transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.blueHaldiTheme .masonryCard:hover::before {
+  height: 100%;
+}
+
+/* CARNIVAL THEME - Festive Elegance */
+.carnivalTheme .heroContent::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  height: 250px;
+  background: 
+    conic-gradient(from 0deg, 
+      rgba(234, 88, 12, 0.1) 0deg,
+      rgba(245, 158, 11, 0.1) 120deg,
+      rgba(234, 179, 8, 0.1) 240deg,
+      rgba(234, 88, 12, 0.1) 360deg);
+  border-radius: 50%;
+  animation: spin 30s linear infinite;
+}
+
+.carnivalTheme .heroTitle {
+  position: relative;
+  padding: 1.5rem 0;
+}
+
+.carnivalTheme .heroTitle::before,
+.carnivalTheme .heroTitle::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 2px solid transparent;
+  border-top-color: rgba(234, 88, 12, 0.3);
+  border-right-color: rgba(245, 158, 11, 0.3);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: spinBorder 4s linear infinite;
+}
+
+.carnivalTheme .heroTitle::before {
+  left: -70px;
+}
+
+.carnivalTheme .heroTitle::after {
+  right: -70px;
+  animation-direction: reverse;
+}
+
+.carnivalTheme .heroAccent {
+  position: relative;
+  width: 150px;
+  height: 3px;
+  margin: 2rem auto;
+  background: linear-gradient(to right, #ea580c, #f59e0b, #eab308);
+  overflow: visible;
+}
+
+.carnivalTheme .heroAccent::before,
+.carnivalTheme .heroAccent::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ea580c;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.carnivalTheme .heroAccent::before {
+  left: -30px;
+  border-color: #ea580c;
+}
+
+.carnivalTheme .heroAccent::after {
+  right: -30px;
+  border-color: #eab308;
+}
+
+.carnivalTheme .galleryTitle {
+  position: relative;
+  display: inline-block;
+  padding: 0 3rem;
+}
+
+.carnivalTheme .galleryTitle::before,
+.carnivalTheme .galleryTitle::after {
+  content: '◈';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, #ea580c, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: float 3s ease-in-out infinite;
+}
+
+.carnivalTheme .galleryTitle::before {
+  left: 0;
+}
+
+.carnivalTheme .galleryTitle::after {
+  right: 0;
+  animation-delay: 1.5s;
+}
+
+.carnivalTheme .masonryCard {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carnivalTheme .masonryCard::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: linear-gradient(45deg, #ea580c, #f59e0b, #eab308, #ea580c);
+  background-size: 300% 300%;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: -1;
+  border-radius: 2px;
+  animation: gradientShift 6s ease infinite;
+}
+
+.carnivalTheme .masonryCard:hover {
+  transform: translateZ(20px);
+}
+
+.carnivalTheme .masonryCard:hover::before {
+  opacity: 0.4;
+}
+
+/* NEON THEME - Cyberpunk Luxury */
+.neonTheme .heroContent::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 280px;
+  background: 
+    radial-gradient(circle, transparent 40%, rgba(236, 72, 153, 0.05) 40%, rgba(236, 72, 153, 0.05) 42%, transparent 42%),
+    radial-gradient(circle, transparent 60%, rgba(168, 85, 247, 0.05) 60%, rgba(168, 85, 247, 0.05) 62%, transparent 62%);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.neonTheme .heroTitle {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.neonTheme .heroTitle::before,
+.neonTheme .heroTitle::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(236, 72, 153, 0.5));
+  box-shadow: 0 0 10px rgba(236, 72, 153, 0.3);
+  top: 0;
+}
+
+.neonTheme .heroTitle::before {
+  left: 50%;
+  transform: translateX(-100%) translateX(-60px);
+}
+
+.neonTheme .heroTitle::after {
+  right: 50%;
+  transform: translateX(100%) translateX(60px) scaleX(-1);
+}
+
+.neonTheme .heroAccent {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 2rem auto;
+  border: 1px solid rgba(236, 72, 153, 0.3);
+  box-shadow: 
+    0 0 20px rgba(236, 72, 153, 0.2),
+    inset 0 0 20px rgba(236, 72, 153, 0.1);
+  animation: neonPulseBox 3s ease-in-out infinite;
+}
+
+.neonTheme .heroAccent::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+}
+
+.neonTheme .heroAccent::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width:
+ 10px;
+  height: 10px;
+  background: rgba(236, 72, 153, 0.6);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.6);
+  animation: neonGlow 2s ease-in-out infinite;
+}
+
+.neonTheme .galleryTitle {
+  position: relative;
+  display: inline-block;
+}
+
+.neonTheme .galleryTitle::before,
+.neonTheme .galleryTitle::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border: 1px solid rgba(236, 72, 153, 0.2);
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 15px rgba(236, 72, 153, 0.1);
+}
+
+.neonTheme .galleryTitle::before {
+  left: -80px;
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+}
+
+.neonTheme .galleryTitle::after {
+  right: -80px;
+  clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+}
+
+.neonTheme .masonryCard {
+  position: relative;
+  overflow: hidden;
+}
+
+.neonTheme .masonryCard::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    rgba(236, 72, 153, 0.3) 0%,
+    rgba(168, 85, 247, 0.3) 50%,
+    rgba(236, 72, 153, 0.3) 100%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: -1;
+  animation: neonBorderFlow 3s linear infinite;
+  background-size: 200% 200%;
+}
+
+.neonTheme .masonryCard:hover::before {
+  opacity: 1;
+}
+
+.neonTheme .masonryCard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(236, 72, 153, 0.1),
+    transparent);
+  transition: left 0.8s ease;
+}
+
+.neonTheme .masonryCard:hover::after {
+  left: 100%;
+}
+
+/* ============================================
+   EXTRAORDINARY ANIMATIONS
+   ============================================ */
+
+@keyframes breathe {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.1);
+    opacity: 0.5;
+  }
+}
+
+@keyframes orbit {
+  0% {
+    transform: translateY(-50%) rotate(0deg);
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-50%) rotate(360deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes rotate360 {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes rotateSquare {
+  0% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+@keyframes spinBorder {
+  from {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(-50%) translateY(-5px);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.05);
+    opacity: 0.5;
+  }
+}
+
+@keyframes neonPulseBox {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(236, 72, 153, 0.2),
+      inset 0 0 20px rgba(236, 72, 153, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(236, 72, 153, 0.4),
+      inset 0 0 30px rgba(236, 72, 153, 0.2);
+  }
+}
+
+@keyframes neonGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(236, 72, 153, 0.9);
+  }
+}
+
+@keyframes neonBorderFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+  .pastelTheme .heroTitle::before,
+  .pastelTheme .heroTitle::after,
+  .blueHaldiTheme .heroContent::before,
+  .carnivalTheme .heroContent::before,
+  .neonTheme .heroContent::before {
+    display: none;
+  }
+
+  .pastelTheme .heroTitle,
+  .blueHaldiTheme .heroTitle,
+  .carnivalTheme .heroTitle,
+  .neonTheme .heroTitle {
+    padding: 0 2rem;
+  }
+
+  .blueHaldiTheme .heroAccent,
+  .carnivalTheme .heroAccent,
+  .neonTheme .heroAccent {
+    width: 80px;
+    height: 80px;
+  }
+
+  .carnivalTheme .heroTitle::before,
+  .carnivalTheme .heroTitle::after {
+    width: 30px;
+    height: 30px;
+    left: -40px;
+  }
+
+  .carnivalTheme .heroTitle::after {
+    right: -40px;
+    left: auto;
+  }
+
+  .neonTheme .galleryTitle::before,
+  .neonTheme .galleryTitle::after {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pastelTheme .heroAccent,
+  .blueHaldiTheme .heroAccent,
+  .carnivalTheme .heroAccent,
+  .neonTheme .heroAccent {
+    width: 60px;
+    height: 60px;
+  }
+
+  .galleryTitle::before,
+  .galleryTitle::after {
+    display: none;
+  }
+}
