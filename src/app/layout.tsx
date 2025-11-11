@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Montserrat, Charm, Playfair_Display } from "next/font/google"
 import ErrorBoundary from "@/components/error-boundary/error-boundary"
+import PrefetchPages from "@/components/prefetch/prefetch-pages"
 import "./globals.css"
 
 // Optimized font loading with adjustFontFallback for better CLS
@@ -109,6 +110,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
       </head>
       <body className={`${montserrat.variable} ${charm.variable} ${playfair.variable}`}>
+        <PrefetchPages />
         <ErrorBoundary>
           {children}
         </ErrorBoundary>

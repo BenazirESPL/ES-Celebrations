@@ -429,11 +429,12 @@
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(212, 175, 55, 0.15);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
               box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
               border-color 0.3s ease;
   will-change: transform;
   animation: scaleIn 0.7s ease-out both;
+  cursor: pointer;
 }
 
 .themeCard:nth-child(1) { animation-delay: 0.1s; }

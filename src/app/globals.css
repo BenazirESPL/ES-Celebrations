@@ -146,7 +146,6 @@ body {
   width: 100%;
   height: 100%;
   font-family: var(--font-montserrat), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  /* background-color: #ffffff; */
   background-color: #08262b;
   color: #000000;
   -webkit-font-smoothing: antialiased;
@@ -167,6 +166,11 @@ body {
   * {
     transition-property: background-color, border-color, color, fill, stroke, opacity, transform;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  
+  /* Optimize common interactive elements */
+  a, button, input, select, textarea {
     transition-duration: 200ms;
   }
 }
@@ -252,4 +256,131 @@ img {
   will-change: transform;
   backface-visibility: hidden;
   perspective: 1000px;
+}
+
+
+/* ============================================
+   VIEW TRANSITIONS API - Native Browser Support
+   ============================================ */
+
+/* Enable view transitions for supported browsers */
+@view-transition {
+  navigation: auto;
+}
+
+/* Default cross-fade transition for all elements */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.3s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth fade transition */
+::view-transition-old(root) {
+  animation-name: fade-out;
+}
+
+::view-transition-new(root) {
+  animation-name: fade-in;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slide transition for page content */
+::view-transition-old(page-content) {
+  animation: slide-out-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::view-transition-new(page-content) {
+  animation: slide-in-right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slide-out-left {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Smooth scale transition for images */
+::view-transition-old(hero-image),
+::view-transition-new(hero-image) {
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::view-transition-old(hero-image) {
+  animation-name: scale-down;
+}
+
+::view-transition-new(hero-image) {
+  animation-name: scale-up;
+}
+
+@keyframes scale-down {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+}
+
+@keyframes scale-up {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Navigation header stays in place */
+::view-transition-old(header),
+::view-transition-new(header) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0.01ms !important;
+  }
 }

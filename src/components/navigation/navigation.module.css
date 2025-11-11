@@ -21,6 +21,8 @@
   padding-bottom: 1rem;
   /* Smooth fade-in animation */
   animation: headerFadeIn 3.2s ease-out forwards;
+  /* View Transition - Keep header in place */
+  view-transition-name: header;
 }
 
 @keyframes headerFadeIn {
@@ -42,6 +44,8 @@
   z-index: 50;
   /* Smooth fade-in animation */
   animation: headerFadeIn 1.2s ease-out forwards;
+  /* View Transition - Keep header in place */
+  view-transition-name: header;
 }
 
 .headerContent {

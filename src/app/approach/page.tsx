@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import Navigation from "@/components/navigation/navigation"
 import Footer from "@/components/footer/footer"
 import PageTransition from "@/components/page-transition/page-transition"
@@ -11,6 +12,12 @@ import styles from "./approach.module.css"
 // For now, using client component for interactivity
 
 export default function ApproachPage() {
+  const router = useRouter();
+
+  const handleThemeClick = (themeSlug: string) => {
+    router.push(`/approach/themes/${themeSlug}`);
+  };
+
   return (
     <div className={styles.container}>
       <Navigation />
@@ -167,7 +174,13 @@ export default function ApproachPage() {
 
             <div className={styles.themesList}>
               {/* Pastel Theme */}
-              <div className={styles.themeCard}>
+              <div
+                className={styles.themeCard}
+                onClick={() => handleThemeClick('pastel')}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && handleThemeClick('pastel')}
+              >
                 <div className={styles.themeImageWrapper}>
                   <Image
                     src="/gallery/themes/pastel/08406.webp"
@@ -190,7 +203,13 @@ export default function ApproachPage() {
               </div>
 
               {/* Blue Haldi Theme */}
-              <div className={styles.themeCard}>
+              <div
+                className={styles.themeCard}
+                onClick={() => handleThemeClick('blue-haldi')}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && handleThemeClick('blue-haldi')}
+              >
                 <div className={styles.themeImageWrapper}>
                   <Image
                     src="/gallery/themes/blue-haldi/9192.webp"
@@ -213,7 +232,13 @@ export default function ApproachPage() {
               </div>
 
               {/* Carnival Theme */}
-              <div className={styles.themeCard}>
+              <div
+                className={styles.themeCard}
+                onClick={() => handleThemeClick('carnival')}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && handleThemeClick('carnival')}
+              >
                 <div className={styles.themeImageWrapper}>
                   <Image
                     src="/gallery/themes/carnival/1693.webp"
@@ -236,7 +261,13 @@ export default function ApproachPage() {
               </div>
 
               {/* Neon Theme */}
-              <div className={styles.themeCard}>
+              <div
+                className={styles.themeCard}
+                onClick={() => handleThemeClick('neon')}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && handleThemeClick('neon')}
+              >
                 <div className={styles.themeImageWrapper}>
                   <Image
                     src="/gallery/themes/neon/56.webp"

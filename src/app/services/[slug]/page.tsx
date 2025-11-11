@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -41,7 +41,7 @@ export default function ServiceGalleryPage({ params }: ServicePageProps) {
     service.images.length > IMAGES_PER_PAGE
   );
 
-  const fetchMoreData = useCallback(() => {
+  const fetchMoreData = () => {
     const currentLength = displayedImages.length;
     const newImages = service.images.slice(
       currentLength,
@@ -54,9 +54,16 @@ export default function ServiceGalleryPage({ params }: ServicePageProps) {
     }
 
     setTimeout(() => {
-      setDisplayedImages((prev) => [...prev, ...newImages]);
+      setDisplayedImages((prev) => {
+        const updated = [...prev, ...newImages];
+        // Check if we've loaded all images
+        if (updated.length >= service.images.length) {
+          setHasMore(false);
+        }
+        return updated;
+      });
     }, 300);
-  }, [displayedImages.length, service.images]);
+  };
 
   return (
     <div className={styles.container}>
@@ -112,6 +119,8 @@ export default function ServiceGalleryPage({ params }: ServicePageProps) {
                 You&apos;ve reached the end of our {service.title.toLowerCase()} gallery
               </div>
             }
+            scrollThreshold={0.9}
+            style={{ overflow: 'visible' }}
           >
             <Masonry
               breakpointCols={breakpointCols}

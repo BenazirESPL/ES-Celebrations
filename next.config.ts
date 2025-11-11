@@ -6,12 +6,11 @@ const nextConfig: NextConfig = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
-    qualities: [75, 85, 90, 95, 100], // Configure allowed quality values
-    minimumCacheTTL: 3600, // 1 hour cache
+    qualities: [75, 85, 90, 95, 100],
+    minimumCacheTTL: 3600, // 1 hour cache for images
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    // Loader optimization
     loader: 'default',
     unoptimized: false,
   },
@@ -19,7 +18,6 @@ const nextConfig: NextConfig = {
   // Compiler optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
-    // React compiler optimizations
     reactRemoveProperties: process.env.NODE_ENV === 'production',
   },
 
@@ -30,6 +28,9 @@ const nextConfig: NextConfig = {
   // Experimental features for maximum performance
   experimental: {
     optimizePackageImports: ['swiper', 'next/image', 'lucide-react', 'framer-motion', 'react-infinite-scroll-component', 'react-masonry-css'],
+    viewTransition: true,
+    // Enable optimized CSS loading
+    optimizeCss: true,
   },
 
   // Compression
@@ -37,8 +38,11 @@ const nextConfig: NextConfig = {
 
   // Production source maps (disable for faster builds)
   productionBrowserSourceMaps: false,
+  
+  // Optimize bundle size
+  swcMinify: true,
 
-  // Headers for better caching and security
+  // Headers for better caching, security, and performance
   async headers() {
     return [
       {
@@ -56,6 +60,31 @@ const nextConfig: NextConfig = {
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on'
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload'
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN'
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'origin-when-cross-origin'
           },
         ],
       },

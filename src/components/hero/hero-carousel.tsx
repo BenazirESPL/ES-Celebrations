@@ -60,11 +60,12 @@ function HeroCarousel() {
   // Memoize swiper modules to prevent recreation
   const swiperModules = useMemo(() => [Autoplay, EffectFade], []);
 
-  // Memoize autoplay config
+  // Memoize autoplay config - optimized for smoother transitions
   const autoplayConfig = useMemo(() => ({
-    delay: 5000,
+    delay: 4000,
     disableOnInteraction: false,
     pauseOnMouseEnter: false,
+    waitForTransition: true,
   }), []);
 
   // Memoize fade effect config
@@ -90,10 +91,13 @@ function HeroCarousel() {
         fadeEffect={fadeConfig}
         autoplay={autoplayConfig}
         loop={true}
-        speed={1200}
+        speed={800}
         touchStartPreventDefault={false}
         resistance={false}
         watchSlidesProgress={false}
+        preventInteractionOnTransition={true}
+        allowTouchMove={true}
+        threshold={10}
         className={styles.swiper}
       >
         {heroImages.map((image, index) => (
@@ -103,16 +107,17 @@ function HeroCarousel() {
                 src={image.url}
                 alt={image.alt}
                 fill
-                priority={index === 0}
-                quality={index === 0 ? 95 : 85}
+                priority={index < 2}
+                quality={index === 0 ? 95 : index < 3 ? 90 : 85}
                 sizes="100vw"
                 placeholder="blur"
                 blurDataURL={blurDataURLs.landscape}
-                loading={index === 0 ? "eager" : "lazy"}
+                loading={index < 2 ? "eager" : "lazy"}
                 style={{
                   objectFit: 'cover',
                   objectPosition: 'center',
                 }}
+                unoptimized={false}
               />
               <div className={styles.overlay} />
             </div>

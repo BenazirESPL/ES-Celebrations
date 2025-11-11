@@ -10,6 +10,8 @@
   will-change: contents;
   /* Optimize rendering */
   contain: layout style paint;
+  /* View Transition - Smooth hero transitions */
+  view-transition-name: hero-image;
 }
 
 .swiper {

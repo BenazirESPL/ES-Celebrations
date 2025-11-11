@@ -1,4 +1,5 @@
 .container {
+  view-transition-name: page-content;
   min-height: 100vh;
   background-color: #08262b;
   display: flex;
