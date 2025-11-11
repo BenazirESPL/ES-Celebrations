@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef } from 'react';
+import { useState } from 'react';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import InfiniteScroll from 'react-infinite-scroll-component';
