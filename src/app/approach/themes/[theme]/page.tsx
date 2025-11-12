@@ -48,7 +48,16 @@ const themeData: Record<string, {
     featuredImage: '/gallery/themes/pastel/08406.webp',
     images: [
       '/gallery/themes/pastel/08406.webp',
-      // Add more images here as placeholder-1.webp, placeholder-2.webp, etc.
+      '/gallery/themes/pastel/compressed_NJ 0654.webp',
+      '/gallery/themes/pastel/compressed_NJ 0667.webp',
+      '/gallery/themes/pastel/compressed_NJ 2529.webp',
+      '/gallery/themes/pastel/compressed_Screenshot 2025-11-13 at 12.webp',
+      '/gallery/themes/pastel/compressed_Screenshot 2025-11-13 at 12 (1).webp',
+      '/gallery/themes/pastel/compressed_Screenshot 2025-11-13 at 12 (2).webp',
+      '/gallery/themes/pastel/compressed_Screenshot 2025-11-13 at 12 (3).webp',
+      '/gallery/themes/pastel/compressed_Screenshot 2025-11-13 at 12 (4).webp',
+      '/gallery/themes/pastel/compressed_Screenshot 2025-11-13 at 12 (5).webp',
+      '/gallery/themes/pastel/compressed_Screenshot 2025-11-13 at 12 (6).webp',
     ],
   },
   'blue-haldi': {
@@ -57,7 +66,11 @@ const themeData: Record<string, {
     featuredImage: '/gallery/themes/blue-haldi/9192.webp',
     images: [
       '/gallery/themes/blue-haldi/9192.webp',
-      // Add more images here as placeholder-1.webp, placeholder-2.webp, etc.
+      '/gallery/themes/blue-haldi/compressed_MS_09188.webp',
+      '/gallery/themes/blue-haldi/compressed_MS_09191.webp',
+      '/gallery/themes/blue-haldi/compressed_MS_09195.webp',
+      '/gallery/themes/blue-haldi/compressed_MS_09197.webp',
+      '/gallery/themes/blue-haldi/compressed_MS_09198.webp',
     ],
   },
   'carnival': {
@@ -66,7 +79,17 @@ const themeData: Record<string, {
     featuredImage: '/gallery/themes/carnival/1693.webp',
     images: [
       '/gallery/themes/carnival/1693.webp',
-      // Add more images here as placeholder-1.webp, placeholder-2.webp, etc.
+      '/gallery/themes/carnival/1646817680132.jpg',
+      '/gallery/themes/carnival/1646817680593.jpg',
+      '/gallery/themes/carnival/1646817681013.jpg',
+      '/gallery/themes/carnival/1646817686477.jpg',
+      '/gallery/themes/carnival/1646817707299.jpg',
+      '/gallery/themes/carnival/1646817709809.jpg',
+      '/gallery/themes/carnival/1646817720775.jpg',
+      '/gallery/themes/carnival/1646817721693.jpg',
+      '/gallery/themes/carnival/1646817724361.jpg',
+      '/gallery/themes/carnival/1646817726714.jpg',
+      '/gallery/themes/carnival/1646817731921.jpg',
     ],
   },
   'neon': {
@@ -75,7 +98,10 @@ const themeData: Record<string, {
     featuredImage: '/gallery/themes/neon/56.webp',
     images: [
       '/gallery/themes/neon/56.webp',
-      // Add more images here as placeholder-1.webp, placeholder-2.webp, etc.
+      '/gallery/themes/neon/compressed_Manb (11).jpg',
+      '/gallery/themes/neon/compressed_Manb (54).webp',
+      '/gallery/themes/neon/compressed_Manb (55).webp',
+      '/gallery/themes/neon/compressed_Manb (62).webp',
     ],
   },
 };
