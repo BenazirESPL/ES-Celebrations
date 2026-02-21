@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Montserrat, Charm, Playfair_Display } from "next/font/google"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import ErrorBoundary from "@/components/error-boundary/error-boundary"
 import PrefetchPages from "@/components/prefetch/prefetch-pages"
 import LenisProvider from "@/components/lenis-provider/lenis-provider"
@@ -117,6 +118,7 @@ export default function RootLayout({
             {children}
           </ErrorBoundary>
         </LenisProvider>
+        <SpeedInsights />
       </body>
     </html>
   )
