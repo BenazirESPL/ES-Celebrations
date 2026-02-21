@@ -2,9 +2,13 @@
 
 import Link from "next/link"
 import Image from "next/image"
+import { usePathname } from "next/navigation"
 import styles from "./footer.module.css"
 
 export default function Footer() {
+  const pathname = usePathname()
+  const isContactPage = pathname === "/contact"
+
   return (
     <footer className={styles.footer}>
       <div className={styles.divider1} />
@@ -27,14 +31,16 @@ export default function Footer() {
         {/* Right Side - Links and Social */}
         <div className={styles.right}>
           <div className={styles.links}>
-            <Link href="/contact" className={styles.link}>
-              CONTACT
-            </Link>
+            {!isContactPage && (
+              <Link href="/contact" className={styles.link}>
+                CONTACT
+              </Link>
+            )}
             <span className={styles.linkDivider}>FOLLOW US ON SOCIAL</span>
             
             <div className={styles.socialIcons}>
               <a
-                href="https://www.instagram.com/entertainmentsportz"
+                href="https://www.instagram.com/escelebration/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialIcon}
