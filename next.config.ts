@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
-    qualities: [75, 85, 90, 95, 100],
     minimumCacheTTL: 3600, // 1 hour cache for images
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
@@ -38,9 +37,6 @@ const nextConfig: NextConfig = {
 
   // Production source maps (disable for faster builds)
   productionBrowserSourceMaps: false,
-  
-  // Optimize bundle size
-  swcMinify: true,
 
   // Headers for better caching, security, and performance
   async headers() {
