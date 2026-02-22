@@ -48,6 +48,14 @@ export const metadata: Metadata = {
   authors: [{ name: "ES Celebrations" }],
   creator: "ES Celebrations",
   publisher: "ES Celebrations",
+  applicationName: "ES Celebrations",
+  category: "event planning",
+  icons: {
+    icon: '/es_circular.png',
+    shortcut: '/es_circular.png',
+    apple: '/es_circular.png',
+  },
+  manifest: '/manifest.json',
   formatDetection: {
     email: false,
     address: false,
@@ -91,10 +99,34 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // Add your verification codes here when available
+    // Add your Google Search Console verification code here once available:
     // google: 'your-google-verification-code',
-    // yandex: 'your-yandex-verification-code',
   },
+}
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "EventPlanner",
+  "name": "ES Celebrations",
+  "url": "https://escelebrations.com",
+  "logo": "https://escelebrations.com/es_circular.png",
+  "image": "https://escelebrations.com/es_circular.png",
+  "description": "ES Celebrations specializes in creating unforgettable weddings and social celebrations. With over 100+ successful events, we bring your dreams to life with creative concepts, flawless execution, and personalized touch.",
+  "priceRange": "₹₹₹",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "IN"
+  },
+  "sameAs": [
+    "https://www.instagram.com/escelebrations"
+  ],
+  "serviceType": [
+    "Wedding Planning",
+    "Event Management",
+    "Milestone Celebrations",
+    "Baby Showers",
+    "Decor & Styling"
+  ]
 }
 
 export default function RootLayout({
@@ -110,6 +142,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* DNS prefetch for performance */}
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className={`${montserrat.variable} ${charm.variable} ${playfair.variable}`}>
         <PrefetchPages />
