@@ -68,7 +68,7 @@ export default function ContactPage() {
                   <Linkedin size={32} />
                 </a>
                 <a
-                  href="https://www.instagram.com/entertainmentsportz"
+                  href="https://www.instagram.com/escelebration/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.socialIcon}
