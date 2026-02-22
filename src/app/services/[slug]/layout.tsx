@@ -1,13 +1,9 @@
 import type { Metadata } from 'next'
 import { getServiceBySlug } from '@/data/services'
 
-interface ServiceLayoutProps {
-  children: React.ReactNode
-  params: { slug: string }
-}
-
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const service = getServiceBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const service = getServiceBySlug(slug)
 
   if (!service) {
     return {
@@ -43,6 +39,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default function ServiceSlugLayout({ children }: ServiceLayoutProps) {
+export default function ServiceSlugLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>
 }
